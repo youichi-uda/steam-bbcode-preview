@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Steam BBCode Preview - Live Editor for Steam Workshop & Guides</title>
+  <meta name="description" content="Free online Steam BBCode preview tool. Write and preview Steam-flavored BBCode with h1-h3, spoiler, olist, table, and more. Real-time preview with Steam's dark theme.">
+  <meta name="keywords" content="Steam BBCode, BBCode preview, Steam Workshop, Steam guide editor, BBCode formatter, Steam formatting">
+  <!-- OGP -->
+  <meta property="og:title" content="Steam BBCode Preview - Live Editor">
+  <meta property="og:description" content="Free online tool to write and preview Steam-flavored BBCode. Supports h1-h3, spoiler, olist, table, and more with Steam's dark theme.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://youichi-uda.github.io/steam-bbcode-preview/ogp.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- Favicon (SVG) -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%231b2838'/><text x='4' y='23' font-size='18' font-family='Arial' font-weight='bold' fill='%2366c0f4'>[B]</text></svg>">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <h1><span>Steam</span> BBCode Preview</h1>
+    <nav class="header-links">
+      <a href="https://partner.steamgames.com/doc/store/editing/formatting" target="_blank" rel="noopener">Steam BBCode Reference</a>
+    </nav>
+  </header>
+
+  <div class="tag-bar">
+    <span class="tag-bar-label">Insert:</span>
+    <button class="tag-btn" data-tag="[b]">b</button>
+    <button class="tag-btn" data-tag="[i]">i</button>
+    <button class="tag-btn" data-tag="[u]">u</button>
+    <button class="tag-btn" data-tag="[strike]">strike</button>
+    <button class="tag-btn" data-tag="[h1]">h1</button>
+    <button class="tag-btn" data-tag="[h2]">h2</button>
+    <button class="tag-btn" data-tag="[h3]">h3</button>
+    <button class="tag-btn" data-tag="[url=]">url</button>
+    <button class="tag-btn" data-tag="[img]">img</button>
+    <button class="tag-btn" data-tag="[list]">list</button>
+    <button class="tag-btn" data-tag="[olist]">olist</button>
+    <button class="tag-btn" data-tag="[*]">*</button>
+    <button class="tag-btn" data-tag="[quote]">quote</button>
+    <button class="tag-btn" data-tag="[code]">code</button>
+    <button class="tag-btn" data-tag="[spoiler]">spoiler</button>
+    <button class="tag-btn" data-tag="[table]">table</button>
+    <button class="tag-btn" data-tag="[hr]">hr</button>
+    <button class="tag-btn" data-tag="[noparse]">noparse</button>
+  </div>
+
+  <main class="main">
+    <div class="pane">
+      <div class="pane-header">
+        BBCode Editor
+        <button class="clear-btn" id="clear-btn">Clear</button>
+      </div>
+      <textarea id="editor" placeholder="Type your Steam BBCode here..." spellcheck="false"></textarea>
+    </div>
+    <div class="divider"></div>
+    <div class="pane">
+      <div class="pane-header">Preview</div>
+      <div class="preview-container" id="preview"></div>
+    </div>
+  </main>
+
+  <!-- Ad slot -->
+  <div class="ad-container" id="ad-bottom">
+    <!-- AdSense: replace data-ad-client and data-ad-slot with your own -->
+    <!--
+    <ins class="adsbygoogle"
+      style="display:block"
+      data-ad-client="ca-pub-XXXXXXXXXXXXXXXX"
+      data-ad-slot="XXXXXXXXXX"
+      data-ad-format="horizontal"
+      data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    -->
+  </div>
+
+  <footer class="footer">
+    Steam BBCode Preview &mdash; Free tool for Steam Workshop &amp; Guide authors. Not affiliated with Valve or Steam.
+    &nbsp;|&nbsp; <a href="https://github.com/youichi-uda/steam-bbcode-preview" target="_blank" rel="noopener">GitHub</a>
+  </footer>
+
+  <script src="bbcode-parser.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
