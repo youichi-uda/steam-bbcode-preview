@@ -153,7 +153,20 @@ const SteamBBCode = (() => {
     const parts = html.split(/(<pre[\s\S]*?<\/pre>)/gi);
     return parts.map((part, i) => {
       if (i % 2 === 1) return part; // Inside <pre>, keep as-is
-      return part.replace(/\n/g, '<br>');
+      let result = part.replace(/\n/g, '<br>');
+      // Remove <br> inside table/list structure (between tags like <table><br><tr>)
+      result = result.replace(/(<table>)(\s*<br>\s*)*/gi, '$1');
+      result = result.replace(/(\s*<br>\s*)*(<\/table>)/gi, '$2');
+      result = result.replace(/(<tr>)(\s*<br>\s*)*/gi, '$1');
+      result = result.replace(/(\s*<br>\s*)*(<\/tr>)/gi, '$2');
+      result = result.replace(/(<\/tr>)(\s*<br>\s*)*/gi, '$1');
+      result = result.replace(/(<\/th>)(\s*<br>\s*)*(<th>)/gi, '$1$3');
+      result = result.replace(/(<\/td>)(\s*<br>\s*)*(<td>)/gi, '$1$3');
+      // Remove <br> directly before/after block elements
+      const blocks = 'table|thead|tbody|tr|th|td|ul|ol|li|blockquote|h[1-6]|hr|pre';
+      result = result.replace(new RegExp(`(<br>\\s*)+(<(?:${blocks})[\\s>])`, 'gi'), '$2');
+      result = result.replace(new RegExp(`(<\\/(?:${blocks})>)(\\s*<br>)+`, 'gi'), '$1');
+      return result;
     }).join('');
   }
 
